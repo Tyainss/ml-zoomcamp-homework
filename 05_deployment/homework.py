@@ -48,3 +48,31 @@ response = requests.post(url, json=client)
 predictions = response.json()
 
 print(predictions) # {'pred_probability': 0.5340417283801275, 'pred_decision': True}
+
+
+### Question 5
+
+## import docker image with 'docker pull agrigorev/zoomcamp-model:2025'
+## "docker images" output:
+"""
+REPOSITORY                 TAG       IMAGE ID       CREATED      SIZE 
+agrigorev/zoomcamp-model   2025      14d79fde0bbf   5 days ago   181MB
+"""
+
+## Answer above (decided by Alexey): 245 MB
+
+
+### Question 6
+# docker build -t mlzoomcamp-hw5 .
+# docker run -it --rm -p 9696:9696 mlzoomcamp-hw5
+
+url = 'http://localhost:9696/predict'
+client_2 = {
+    "lead_source": "organic_search",
+    "number_of_courses_viewed": 4,
+    "annual_income": 80304.0
+}
+response = requests.post(url, json=client_2)
+predictions = response.json()
+
+print(predictions) # {'pred_probability': 0.9933071490756734, 'pred_decision': True}
